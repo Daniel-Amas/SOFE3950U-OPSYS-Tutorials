@@ -38,7 +38,7 @@ int main()
 
 		printf("Data successfully written in file "
 			"GfgTest.c\n");
-		printf("The file is now closed.");
+		printf("The file is now closed.\n");
 	}
 
 	return 0;

@@ -40,7 +40,7 @@ int main()
 
 		printf(
 			"Data successfully read from file GfgTest.c\n");
-		printf("The file is now closed.");
+		printf("The file is now closed.\n");
 	}
 	return 0;
 }
