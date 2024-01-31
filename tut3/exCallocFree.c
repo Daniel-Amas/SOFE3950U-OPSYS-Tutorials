@@ -4,13 +4,10 @@
 
 int main() {
   int n, i, *ptr, sum = 0;
-
   printf("Enter number of elements: ");
   scanf("%d", &n);
 
-  ptr = (int*) malloc(n * sizeof(int));
-
-  // if memory cannot be allocated
+  ptr = (int*) calloc(n, sizeof(int));
   if(ptr == NULL) {
     printf("Error! memory not allocated.");
     exit(0);
@@ -23,9 +20,6 @@ int main() {
   }
 
   printf("Sum = %d", sum);
-
-  // deallocating the memory
   free(ptr);
-
   return 0;
 }
