@@ -11,7 +11,7 @@
 
 
 static char categories[NUM_CATEGORIES][MAX_LEN] = {
-    "Geography", "Animals", "Science", "Math"
+    "Geography", "Animals", "Science"
 };
     
     
