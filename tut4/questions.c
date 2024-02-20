@@ -22,7 +22,7 @@ question quest[NUM_QUESTIONS] = {
 },
 
 {
-    "Drink",
+    "Drinks",
     "What is the main ingredient in a margarita",
     "TEQUILA", 
     300,
