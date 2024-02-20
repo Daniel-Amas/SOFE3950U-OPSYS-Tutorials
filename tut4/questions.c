@@ -7,7 +7,7 @@ question quest[NUM_QUESTIONS] = {
 
 {
     "Science",
-    "TWhat is the smallest unit of matter?",
+    "What is the smallest unit of matter?",
     "ATOM",
     100,
     false
@@ -22,16 +22,16 @@ question quest[NUM_QUESTIONS] = {
 },
 
 {
-    "Food and Drink",
-    "This is the main ingredient in a margarita",
+    "Drink",
+    "What is the main ingredient in a margarita",
     "TEQUILA", 
     300,
     false
 },
 
 {
-    "sports",
-    "what is the most popular sport in the world?",
+    "Sports",
+    "What is the most popular sport in the world?",
     "SOCCER",
     400,
     false
@@ -45,33 +45,33 @@ question quest[NUM_QUESTIONS] = {
     false
 },
 {
-    "animals",
-    "This animal is known for its long neck",
+    "Animals",
+    "What animal is known for its long neck",
     "GIRAFFE",
     200,
     false
 },
 
 {
-    "music",
-    "what is the most popular music genre?",
+    "Music",
+    "What is the most popular music genre?",
     "POP",
      300,
     false
 },
 
 {
-    "INSECTS",
-    "This one is not margerine and doesn't walk",
-    "BUTTERFLY",
+    "Food",
+    "What is the most stolen grocery item?",
+    "CHEESE",
     400,
     false
 },
 
 {
-    "GAMES",
-    "what is the most popular video game?",
-    "404",
+    "Lifestyle",
+    "What is the most popular social media platform?",
+    "FACEBOOK",
     100,
     false
 },
@@ -93,9 +93,9 @@ question quest[NUM_QUESTIONS] = {
 },
 
 {
-    "Lifestyle",
-    "What is the most popular social media platform?",
-    "FACEBOOK",
+    "Games",
+    "What is the most popular video game?",
+    "404",
     400,
     false
 }
@@ -107,8 +107,8 @@ void initialize_game(void)
     // initialize the questions struct and assign it to the questions array
      printf("Welcome to jeopardy.\n"
 	 "Quick rundown of the rules: \n"
-	 "1. To select a quetion, type the category and the value .\n"
-	 "2. Answer in all caps, in 'WHO IS' or 'WHAT IS'. We really don't care which.\n"
+	 "1. To select a question, type the category and the value .\n"
+	 "2. Answer in all caps, in 'WHO IS' or 'WHAT IS'. We don't care which.\n"
 	 ;
   
 }
