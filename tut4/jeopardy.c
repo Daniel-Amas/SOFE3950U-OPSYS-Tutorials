@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include "questions.h"
 #include "players.h"
-#include "jeopardy.h
+#include "jeopardy.h"
 
 #define BUFFER_LEN 256
 #define NUM_PLAYERS 4
