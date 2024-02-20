@@ -5,13 +5,13 @@
 #include <stdbool.h>
 
 #define MAX_LEN 256
-#define NUM_CATEGORIES 3
+#define NUM_CATEGORIES 12
 
 #define NUM_QUESTIONS 12
 
 
 static char categories[NUM_CATEGORIES][MAX_LEN] = {
-    "Geography", "Animals", "Science"
+    "Science", "History", "Drinks", "Sports", "Technology", "Animals", "Music", "Food", "Lifestyle", "Geography", "Math", "Games"
 };
     
     
@@ -30,13 +30,13 @@ question questions[NUM_QUESTIONS];
 // Initializes the array of questions for the game
 extern void initialize_game(void);
 
-// Displays each of the remaining categories and question dollar values that have not been answered
+// Displays each of the remaining categories and questions dollar values that have not been answered
 extern void display_categories(void);
 
 // Displays the question for the category and dollar value
 extern void display_question(char *category, int value);
 
-// Returns true if the answer is correct for the question for that category and dollar value
+// Returns true if the answer is correct for the question for that category and the dollar value
 extern bool valid_answer(char *category, int value, char *answer);
 
 // Returns true if the question has already been answered
