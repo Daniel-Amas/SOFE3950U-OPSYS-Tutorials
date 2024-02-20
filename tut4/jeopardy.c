@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     int player = 1;
     int j = -1;
 
-    while (1) //actual game part
+    while (1) 
     {
         j = -1;
         test = 0;
@@ -83,7 +83,8 @@ int main(int argc, char *argv[])
         for(int jj = 0; jj < NUM_CATEGORIES; jj++) 
         {
 
-            if ( (strcmp(cat, categories[jj]) == 0) && (value == 100 || value == 200 || value == 300 || value == 400 ) ){ 
+            if ( (strcmp(cat, categories[jj]) == 0) && (value == 100 || value == 200 || 
+		    value == 300 || value == 400 ) ){ 
                 if ( already_answered(&categories[jj], value) ) 
                 { continue;}
             
@@ -137,13 +138,13 @@ int main(int argc, char *argv[])
         if (rem_questions)
         {
                     rem_questions--;
-                    //printf("Questions left: %d\n", rem_questions); 
+                  
             if (player == NUM_PLAYERS)
                     {
                         printf("show them the leaderboard: \n");
                         show_results(players);
                         printf("New Round.");
-                        fgets(buffer, BUFFER_LEN, stdin); //wait for enter
+                        fgets(buffer, BUFFER_LEN, stdin); 
                        player = 1;
                     }
 
@@ -152,23 +153,24 @@ int main(int argc, char *argv[])
                         printf("we have %s with %d points\n", players[player].name, players[player].score);
                         printf(" next player");
                        player += 1;
-                        fgets(buffer, BUFFER_LEN, stdin); //pause
+                        fgets(buffer, BUFFER_LEN, stdin); 
                     }
                 
-            system("clear");//clear screen
+            system("clear");
                     
                     }
             
-        else //if we run out of questions
+        else 
                 {
-                printf("Game over, the winner is %s with %d points. Congratulations.\n", players[winner(players)].name, players[winner(players)].score);
+                printf("Game over, the winner is %s with %d points. Congratulations.\n", 
+			players[winner(players)].name,players[winner(players)].score);
                 return EXIT_SUCCESS;
                 }
                 
             }
             
 
-    return EXIT_SUCCESS; // END
+    return EXIT_SUCCESS; 
 }
 
 
@@ -181,10 +183,10 @@ int winner(player1 *players)
 	
     for (int i = 1; i <=NUM_PLAYERS; i++)
 	{
-	    if (players[i].score > max) //if player score is bigger than max...
+	    if (players[i].score > max)
 	    {
-            max = players[i].score; //...set max to player score
-            best = i; //and set player number to best
+            max = players[i].score; 
+            best = i; 
             }
 	    if (players[i].score == max){
 		tie = i;
@@ -192,7 +194,7 @@ int winner(player1 *players)
 
 	}
 	
-	return best; //TODO add tie breaker
+	return best; 
 }
 
 void show_results(player1 *players)
@@ -208,7 +210,7 @@ void show_results(player1 *players)
 
 void tokenize(char *input, char **token)
 {
-  	if (input[strlen(input)-1] == '\n') { input[strlen(input)-1] = '\0'; } //remove newline     
+  	if (input[strlen(input)-1] == '\n') { input[strlen(input)-1] = '\0'; }     
 	char *p = strtok(input, token);
 	while(p != NULL) {
 	    printf("%s\n", p);
