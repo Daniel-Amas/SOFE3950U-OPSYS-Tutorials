@@ -3,6 +3,11 @@
 #include <stdio.h> 
 #include <pthread.h> 
 
+//Global Variables
+int grades[10];
+int total_grade = 0;
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 void *class_total(void *arg){
     int grade = *(int *)arg;
 
@@ -16,10 +21,6 @@ void *class_total(void *arg){
     pthread_exit(NULL);
 }
 
-//Global Variables
-int grades[10];
-int total_grade = 0;
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 int main(){
     printf("Enter grades for ten students:\n");
