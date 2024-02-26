@@ -3,6 +3,13 @@
 #include <stdio.h> 
 #include <pthread.h> 
 
+//Global Variables
+int grades[10];
+int total_grade = 0;
+double total_bellcurve = 0.0;
+pthread_barrier_t barrier;
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 void *read_grades(void *arg){
     FILE *file = fopen("grades.txt", "r");
     if (file == NULL){
@@ -48,13 +55,6 @@ void *save_bellcurve(void *arg){
 
     pthread_exit(NULL);
 }
-
-//Global Variables
-int grades[10];
-int total_grade = 0;
-double total_bellcurve = 0.0;
-pthread_barrier_t barrier;
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 int main(){
     pthread_barrier_init(&barrier, NULL, 11);
