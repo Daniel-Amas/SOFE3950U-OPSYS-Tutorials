@@ -2,11 +2,13 @@
 #include <stdlib.h> 
 #include <stdio.h> 
 #include <pthread.h> 
+#include <errno.h> 
+#define NUM_GRADES 10
 
 //Global Variables
-int grades[10];
+int grades[NUM_GRADES];
 int total_grade = 0;
-double total_bellcurve = 0.0;
+int total_bellcurve = 0;
 pthread_barrier_t barrier;
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
