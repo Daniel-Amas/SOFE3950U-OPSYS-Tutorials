@@ -31,6 +31,7 @@ int main(){
     }
 
     //Create Threads
+    pthread_t threads[10];
     for (int i = 0; i < 10; i++){
         if(pthread_create(&threads[i], NULL, class_total, ()&grades[i]) != 0){
             perror("Error creating Thread");
@@ -45,5 +46,5 @@ int main(){
 
     printf("Total Grade: %d\n");
 
-    return EXIT_SUCCESS
+    return EXIT_SUCCESS;
 }

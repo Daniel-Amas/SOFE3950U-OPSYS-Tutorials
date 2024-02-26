@@ -78,7 +78,7 @@ int main(){
     pthread_join(readThread, NULL);
 
     for (int i = 0; i<10; i++){
-        pthread_join(saveThreads[i], NULL)
+        pthread_join(saveThreads[i], NULL);
     }
 
     pthread_barrier_destroy(&barrier);
@@ -88,5 +88,5 @@ int main(){
     printf("Total Bellcurved Grade: %.2f\n", total_bellcurve);
     printf("Class Average After Bellcurve: %.2f\n", total_bellcurve/10);
 
-    return EXIT_SUCCESS
+    return EXIT_SUCCESS;
 }
