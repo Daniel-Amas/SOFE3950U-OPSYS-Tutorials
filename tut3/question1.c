@@ -16,5 +16,5 @@ int main(void)
     printf("Input your height: ");
     scanf("%f", &height);
 
-    printf("Your name is %sYour age is %d\nYour height is %.1f", firstName, age, height);
+    printf("Your name is %sYour age is %d\nYour height is %.1f\n", firstName, age, height);
 }

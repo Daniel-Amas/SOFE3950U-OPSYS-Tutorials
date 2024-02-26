@@ -3,20 +3,21 @@
 #include <pthread.h>
 #define Max_Threads 5
 
-void* bellcurve (void student);
-
 struct student{
     char name[50];
     int id;
     float grade;
 };
 
-void bellcurve (void students){
-    struct studentstd = (struct student) students;
-              printf(" Student Id is: %d \n", std->id);
-                  printf(" Student Name is: %s \n", std->name);
-             float j = std->grade 1.50;
-            printf ("Student's Bellcurve grade : %f \n", j);
+void *bellcurve (void *students){
+    struct student *std = (struct student*) students;
+    
+    printf(" Student Id is: %d \n", std->id);
+
+    printf(" Student Name is: %s \n", std->name);
+
+    float j = std->grade * 1.50;
+    printf ("Student's Bellcurve grade : %f \n", j);
 
 }
 
@@ -27,10 +28,10 @@ int main(){
 
     for(int i = 0; i < 5; i++){
         printf("\nStudent %d name: ", i + 1);
-        scanf("%s", &students[i].name);
+        scanf("%s", students[i].name);
 
         printf("Student %d id: ", i + 1);
-        scanf("%s", &students[i].id);
+        scanf("%d", &students[i].id);
 
         printf("Student %d grade: ", i + 1);
         scanf("%f", &students[i].grade);

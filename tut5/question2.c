@@ -7,7 +7,8 @@ void *bellcurve (void *arg){
 	int *grade = (int *) arg;
 	double bellcurved = (*grade) * 1.50;
 	printf ("Grade after Bellcurve: %.2f\n", bellcurved);
-        pthread_exit(NULL);
+    
+	pthread_exit(NULL);
 
 }
 
