@@ -73,3 +73,12 @@ bool already_answered(char *category, int value) {
     }
     return false;
 }
+
+bool all_questions_answered(void) {
+    for (int i = 0; i < NUM_QUESTIONS; ++i) {
+        if (!questions[i].answered) {
+            return false;
+        }
+    }
+    return true;
+}
