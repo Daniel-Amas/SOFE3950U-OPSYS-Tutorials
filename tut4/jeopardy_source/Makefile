@@ -11,7 +11,7 @@ EXE = jeopardy.exe
 $(EXE): $(OBJECTS)
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
 
-%.o: %.c jeopardy.h questions.h players.h
+%.o: %.c jeopardy.h questions.h players.h questions.c
 	$(CC) $(CFLAGS) -c $<
 
 all: $(EXE)
