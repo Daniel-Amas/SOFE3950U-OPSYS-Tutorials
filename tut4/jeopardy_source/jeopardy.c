@@ -62,7 +62,7 @@ int main(void)
     for (int i = 0; i < NUM_PLAYERS; i++)
     {
         printf("Player %d: ", i + 1);
-        scanf("%s", players[i].name);
+        scanf("%255s", players[i].name);
         players[i].score = 0;
         num_players++;
     }
