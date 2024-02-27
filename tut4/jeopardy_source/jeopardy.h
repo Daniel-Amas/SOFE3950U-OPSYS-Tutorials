@@ -19,5 +19,4 @@ extern void show_results(player *players, int num_players);
 // Check if all questions have been answered
 extern bool all_questions_answered(void);
 
-#endif
- /* JEOPARDY_H_ */
+#endif /* JEOPARDY_H_ */

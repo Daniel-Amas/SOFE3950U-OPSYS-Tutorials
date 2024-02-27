@@ -5,15 +5,16 @@ LIBS =
 SOURCES = jeopardy.c questions.c players.c
 OBJECTS = $(subst .c,.o,$(SOURCES))
 EXE = jeopardy.exe
+
 .PHONY: clean help
 
-jeopardy.exe : $(OBJECTS)
+$(EXE): $(OBJECTS)
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@
 
-%.o : %.c
+%.o: %.c jeopardy.h questions.h players.h
 	$(CC) $(CFLAGS) -c $<
 
-all : $(EXE)
+all: $(EXE)
 
 clean:
 	rm -f $(OBJECTS) $(EXE) *~
