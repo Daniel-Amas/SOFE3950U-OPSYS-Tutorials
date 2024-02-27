@@ -4,7 +4,10 @@
 #include <time.h>
 #include "questions.h"
 
-// Initializes the array of questions for the game
+char categories[NUM_CATEGORIES][MAX_LEN];
+
+question questions[NUM_QUESTIONS];
+
 void initialize_game(void) {
     // Initialization of questions array
     srand(time(NULL));
