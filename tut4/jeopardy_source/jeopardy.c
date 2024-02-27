@@ -11,10 +11,39 @@
 #define NUM_PLAYERS 4
 
 // Processes the answer from the user containing what is or who is and tokenizes it to retrieve the answer.
-void tokenize(char *input, char **tokens);
+void tokenize(char *input, char **tokens) {
+    // Simple tokenization assuming space as a delimiter
+    char *token = strtok(input, " ");
+    *tokens = token;
+    token = strtok(NULL, " ");
+    if (token != NULL) {
+        strcat(*tokens, " ");
+        strcat(*tokens, token);
+    }
+}
 
 // Displays the game results for each player, their name and final score, ranked from first to last place
-void show_results(player *players, int num_players);
+void show_results(player *players, int num_players)
+{
+    // Sort players by score
+    for (int i = 0; i < num_players - 1; i++) {
+        for (int j = i + 1; j < num_players; j++) {
+            if (players[i].score < players[j].score) {
+                // Swap players
+                player temp = players[i];
+                players[i] = players[j];
+                players[j] = temp;
+            }
+        }
+    }
+
+    // Display results
+    printf("Game Results:\n");
+    for (int i = 0; i < num_players; ++i) {
+        printf("%d. %s - Score: %d\n", i + 1, players[i].name, players[i].score);
+    }
+    exit(EXIT_SUCCESS);
+}
 
 int main(int argc, char *argv[])
 {
