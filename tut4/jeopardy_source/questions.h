@@ -19,6 +19,12 @@
 // List of 3 categories as array of strings
 extern char categories[NUM_CATEGORIES][MAX_LEN];
 
+question questions[NUM_QUESTIONS] = {
+    "programming",
+    "algorithms",
+    "databases"
+};
+
 // Questions struct for each question
 typedef struct {
     char category[MAX_LEN];
