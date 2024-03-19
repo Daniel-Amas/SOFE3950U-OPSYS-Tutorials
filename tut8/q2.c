@@ -19,16 +19,6 @@ typedef struct {
     bool suspended;
 } Proc;
 
-typedef struct node {
-    Proc data;
-    struct node *left;
-    struct node *right;
-} Node;
-
-typedef struct {
-    Node *root;
-} BinaryTree;
-
 typedef struct {
     Proc array[MEMORY];
     int front, rear, size;
@@ -63,70 +53,71 @@ Proc pop(Queue *q) {
     return data;
 }
 
-void insertNode(BinaryTree *tree, Proc data) {
-    Node *newNode = (Node *)malloc(sizeof(Node));
-    newNode->data = data;
-    newNode->left = newNode->right = NULL;
-
-    if (tree->root == NULL) {
-        tree->root = newNode;
-        return;
-    }
-
-    Node *current = tree->root;
-    while (1) {
-        if (strcmp(data.name, current->data.name) < 0) {
-            if (current->left == NULL) {
-                current->left = newNode;
-                break;
-            }
-            current = current->left;
-        } else {
-            if (current->right == NULL) {
-                current->right = newNode;
-                break;
-            }
-            current = current->right;
-        }
-    }
-}
-
-void printTree(Node *root) {
-    if (root != NULL) {
-        printf("Parent: %s\n", root->data.name);
-        printf("Children: ");
-        if (root->left != NULL) printf("%s ", root->left->data.name);
-        if (root->right != NULL) printf("%s", root->right->data.name);
-        printf("\n\n");
-        printTree(root->left);
-        printTree(root->right);
+void executeProcess(Proc process, int avail_mem[]) {
+    printf("Executing process:\n");
+    printf("Name: %s\n", process.name);
+    printf("Priority: %d\n", process.priority);
+    printf("Memory: %d\n", process.memory);
+    printf("Runtime: %d\n", process.runtime);
+    
+    pid_t pid = fork();
+    if (pid < 0) {
+        perror("Fork failed");
+        exit(EXIT_FAILURE);
+    } else if (pid == 0) { // Child process
+        // Execute process binary here using exec
+        printf("Executing %s\n", process.name);
+        sleep(process.runtime);
+        printf("%s completed.\n", process.name);
+        exit(EXIT_SUCCESS);
+    } else { // Parent process
+        process.pid = pid;
+        process.address = -1; // Update with the actual memory address
+        avail_mem[process.address] = 1; // Mark memory as used
+        waitpid(pid, NULL, 0); // Wait for child process to finish
+        avail_mem[process.address] = 0; // Free the memory
     }
 }
 
 int main() {
-    FILE *file = fopen("processes_tree.txt", "r");
+    Queue priority, secondary;
+    initializeQueue(&priority);
+    initializeQueue(&secondary);
+    int avail_mem[MEMORY] = {0};
+
+    FILE *file = fopen("processes_q2.txt", "r");
     if (!file) {
         printf("Error opening file.\n");
         return EXIT_FAILURE;
     }
 
-    BinaryTree tree = {NULL};
     Proc temp;
-    char parent[256];
-
-    while (fscanf(file, "%s %s %d %d", parent, temp.name, &temp.priority, &temp.memory) == 4) {
-        if (strcmp(parent, "NULL") == 0) {
-            tree.root = (Node *)malloc(sizeof(Node));
-            tree.root->data = temp;
-            tree.root->left = tree.root->right = NULL;
-        } else {
-            insertNode(&tree, temp);
-        }
+    while (fscanf(file, "%255[^,], %d, %d, %d\n", temp.name, &temp.priority, &temp.memory, &temp.runtime) == 4) {
+        temp.pid = 0;
+        temp.address = 0;
+        temp.suspended = false;
+        if (temp.priority == 0)
+            push(&priority, temp);
+        else
+            push(&secondary, temp);
     }
     fclose(file);
 
-    printf("Printing tree:\n\n");
-    printTree(tree.root);
+    while (!isEmpty(&priority)) {
+        Proc process = pop(&priority);
+        executeProcess(process, avail_mem);
+    }
+
+    while (!isEmpty(&secondary)) {
+        Proc process = pop(&secondary);
+        // Check if enough memory is available
+        if (process.memory <= MEMORY) {
+            executeProcess(process, avail_mem);
+        } else {
+            printf("Insufficient memory for %s, pushing it back to the queue.\n", process.name);
+            push(&secondary, process);
+        }
+    }
 
     return 0;
 }
