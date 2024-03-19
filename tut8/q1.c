@@ -59,7 +59,7 @@ void printTree(node *root) {
 }
 
 int main(void) {
-    FILE *file = fopen("process_tree.txt", "r");
+    FILE *file = fopen("processes_tree.txt", "r");
     if (file == NULL) {
         printf("Failed to open file\n");
         return EXIT_FAILURE;
