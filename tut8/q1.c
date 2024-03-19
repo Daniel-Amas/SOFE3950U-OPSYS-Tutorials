@@ -83,6 +83,5 @@ int main(void) {
     printTree(root);
 
     // Free memory allocated for the binary tree
-    // (This would be more comprehensive in a real program)
     return 0;
 }
